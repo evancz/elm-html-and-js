@@ -9,7 +9,7 @@ values and cannot be functions. Use the
 and [`Json`](http://docs.elm-lang.org/library/Json.elm)
 libraries to convert values.
 
-## Overview of Elm/JS communication
+## Usage Overview
 
 If you create an Elm module named `Stamps`, it will be named
 `Elm.Stamps` in JavaScript. To instantiate a module you can
