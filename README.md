@@ -49,5 +49,3 @@ foreign import jsevent "reset" (JS.fromInt 42)
 foreign export jsevent "count"
     count : Signal JS.JSNumber
 ```
-
-|]
