@@ -1,19 +1,11 @@
 This project illustrates how to embed an Elm program in an HTML
-page and how to communicate with JavaScript. After cloning the
-the project, get it running with the following commands:
+page and how to communicate with JavaScript.
+Get it running with the following commands:
 
     elm --only-js Stamps.elm
     open index.html
 
 ## Overview of API Usage
-
-Communication between Elm and JavaScript happens by sending events
-along named channels. Elm interprets these channels as signals and
-JavaScript interprets them as event streames. Values passed along
-named channels must be JavaScript values and cannot be functions. Use the
-[`JavaScript`](http://docs.elm-lang.org/library/JavaScript.elm)
-and [`Json`](http://docs.elm-lang.org/library/Json.elm)
-libraries to convert values.
 
 If you create an Elm module named `Stamps`, it will be named
 `Elm.Stamps` in JavaScript. To instantiate a module you can
@@ -40,7 +32,9 @@ stamps.recv('count', function(event) {
     console.log(event.value);
 });
 ```
-
+Communication between Elm and JavaScript happens by sending events
+along named channels, like `'reset'` and `'count'`. Elm interprets
+these channels as signals and JavaScript interprets them as event streames.
 In Elm, you declare channels with foreign event imports and exports:
 
 ```haskell
@@ -53,3 +47,9 @@ foreign import jsevent "reset" (JS.fromInt 42)
 foreign export jsevent "count"
     count : Signal JS.JSNumber
 ```
+
+Values passed along named channels must be JavaScript values and
+cannot be functions. You use the
+[`JavaScript`](http://docs.elm-lang.org/library/JavaScript.elm)
+and [`Json`](http://docs.elm-lang.org/library/Json.elm)
+libraries to do conversions.
