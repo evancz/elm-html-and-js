@@ -1,6 +1,6 @@
 This project illustrates how to embed an Elm program in an HTML
-page and how to communicate with JavaScript. Get it running
-with the following commands:
+page and how to communicate with JavaScript. After cloning the
+the project, get it running with the following commands:
 
     elm --only-js Stamps.elm
     open index.html
