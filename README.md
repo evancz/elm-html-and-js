@@ -1,7 +1,6 @@
 This project illustrates how to embed an Elm program in an HTML
 page and how to communicate with JavaScript.
-
-#### [See it in action!](http://evancz.github.io/elm-html-and-js)
+**[See it in action!](http://evancz.github.io/elm-html-and-js)**
 
 After cloning the project, get it running on your
 machine with the following commands:
