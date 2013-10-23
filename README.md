@@ -7,6 +7,14 @@ the project, get it running with the following commands:
 
 ## Overview of API Usage
 
+Communication between Elm and JavaScript happens by sending events
+along named channels. Elm interprets these channels as signals and
+JavaScript interprets them as event streames. Values passed along
+named channels must be JavaScript values and cannot be functions. Use the
+[`JavaScript`](http://docs.elm-lang.org/library/JavaScript.elm)
+and [`Json`](http://docs.elm-lang.org/library/Json.elm)
+libraries to convert values.
+
 If you create an Elm module named `Stamps`, it will be named
 `Elm.Stamps` in JavaScript. To instantiate a module you can
 use any of the following functions:
@@ -18,13 +26,7 @@ Elm.worker(Elm.Stamps);       // instantiate without graphics
 ```
 
 Each of these creates a module instance that you can communicate
-with from JavaScript. Communication happens by sending events
-along named channels. Elm interprets these channels as signals and
-JavaScripct interprets them as event streames. Values passed along
-named channels must be JavaScript values and cannot be functions. Use the
-[`JavaScript`](http://docs.elm-lang.org/library/JavaScript.elm)
-and [`Json`](http://docs.elm-lang.org/library/Json.elm)
-libraries to convert values.
+with from JavaScript.
 
 ```javascript
 // Embed the Stamps module in a div with ID 'elm-stamps'
