@@ -1,0 +1,78 @@
+<html>
+
+<head>
+  <title>Embedding Elm</title>
+  <script src="resources/elm-runtime.js"></script>
+  <script src="build/Stamps.js"></script>
+  <style>
+  body {
+    background-image: url('resources/texture.png');
+    background-color: #d3d7cf;
+    font-family: "Lucida Grande","Trebuchet MS","Bitstream Vera Sans",Verdana,Helvetica,sans-serif;
+    font-size: 14px;
+  }
+  #elm-stamps {
+    width:  400px;
+    height: 400px;
+    background-color: white;
+    border: 1px solid #babdb6;
+  }
+  #column {
+     width: 420px;
+     display: block;
+     margin-left: auto;
+     margin-right: auto;
+  }
+  </style>
+</head>
+
+<body>
+<div id="column">
+  <h1>Stamps</h1>
+
+  <p>This demo shows how to:</p>
+  <ol>
+    <li>embed an Elm program in HTML</li>
+    <li>send events back and forth between Elm and JavaScript</li>
+  </ol>
+  <p>The white square is an Elm program, buth the rest is HTML, CSS, and JS.
+     See the <a href="http://github.com/evancz/stamps">source code</a>
+     for more info.
+  </p>
+
+  <div id="elm-stamps"></div>
+
+  <p>There are currently <span id="current-count">0</span> stamps.
+     <button onclick="resetStamps()">Reset</button>
+  </p>
+  <p>You have created <span id="total-count">0</span> stamps in total.</p>
+</div>
+</body>
+
+<script type="text/javascript">
+  // Show the stamp module in the "elm-stamps" div.
+  var stampDiv = document.getElementById('elm-stamps');
+  var stamps = Elm.embed(Elm.Stamps, stampDiv);
+
+  // Reset the number of stamps in the Elm code.
+  // The value we send does not matter, we just
+  // need the event.
+  function resetStamps() {
+      stamps.send('reset', 42);
+  }
+
+  // Always show the latest count of stamps, which is exported
+  // from the Stamps module as the 'count' event stream.
+  var currentCount = document.getElementById('current-count');
+  var totalCount = document.getElementById('total-count');
+  var total = 0;
+  stamps.recv('count', function(event) {
+      currentCount.innerHTML = event.value;
+      if (event.value > 0) {
+          total += 1;
+          totalCount.innerHTML = total;
+      }
+  });
+</script>
+
+</html>
