@@ -1,5 +1,11 @@
 This project illustrates how to embed an Elm program in an HTML
-page and how to communicate with JavaScript.
+page and how to communicate with JavaScript. Get it running
+with the following commands:
+
+    elm --only-js Stamps.elm
+    open index.html
+
+## Overview of API Usage
 
 Communication between Elm and JS happens with events.
 Signals can be exported as event streams, and event streams
@@ -8,13 +14,6 @@ values and cannot be functions. Use the
 [`JavaScript`](http://docs.elm-lang.org/library/JavaScript.elm)
 and [`Json`](http://docs.elm-lang.org/library/Json.elm)
 libraries to convert values.
-
-Get this project running by running:
-
-    elm --only-js Stamps.elm
-    open index.html
-
-## Overview of API Usage
 
 If you create an Elm module named `Stamps`, it will be named
 `Elm.Stamps` in JavaScript. To instantiate a module you can
