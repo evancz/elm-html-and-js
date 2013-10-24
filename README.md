@@ -1,4 +1,4 @@
-# html/js integration &mdash; [live demo](http://evancz.github.io/elm-html-and-js)
+# HTML/JS integration &mdash; [live demo](http://evancz.github.io/elm-html-and-js)
 
 This project illustrates how to embed an Elm program in an HTML
 page and how to communicate with JavaScript.
