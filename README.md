@@ -1,15 +1,16 @@
+# html/js integration &mdash; [live demo](http://evancz.github.io/elm-html-and-js)
+
 This project illustrates how to embed an Elm program in an HTML
 page and how to communicate with JavaScript.
-**[See it in action!](http://evancz.github.io/elm-html-and-js)**
 
-## Build Instructions
+### Build Instructions
 
     git clone https://github.com/evancz/elm-html-and-js.git
     cd elm-html-and-js
     elm --only-js Stamps.elm
     open index.html
 
-## Overview of API Usage
+### Overview of API Usage
 
 If you create an Elm module named `Stamps`, it will be named
 `Elm.Stamps` in JavaScript. To instantiate a module you can
