@@ -17,9 +17,9 @@ If you create an Elm module named `Stamps`, it will be named
 use any of the following functions:
 
 ```javascript
-Elm.fullscreen(Elm.Stamps);   // take over the whole page
-Elm.embed(Elm.Stamps, div);   // embed in a specific DOM node
-Elm.worker(Elm.Stamps);       // instantiate without graphics
+Elm.fullscreen(Elm.Stamps, {reset:[]});   // take over the whole page
+Elm.embed(Elm.Stamps, div, {reset:[]});   // embed in a specific DOM node
+Elm.worker(Elm.Stamps,     {reset:[]});   // instantiate without graphics
 ```
 
 Each of these creates a module instance that you can communicate
@@ -28,33 +28,28 @@ with from JavaScript.
 ```javascript
 // Embed the Stamps module in a div with ID 'elm-stamps'
 var div = document.getElementById('elm-stamps');
-var stamps = Elm.embed(Elm.Stamps, div);
+var stamps = Elm.embed(Elm.Stamps, div, {reset:[]});
 
 // You can send and receive values through
-// named channels, like 'reset' and 'count'.
-stamps.send('reset', 42);
-stamps.recv('count', function(event) {
+// ports 'reset' and 'count'.
+stamps.ports.reset.send([]);
+stamps.ports.count.subscribe(function(event) {
     console.log(event.value);
 });
 ```
 Communication between Elm and JavaScript happens by sending events
-along named channels, like `'reset'` and `'count'`. Elm interprets
-these channels as signals and JavaScript interprets them as event streames.
-In Elm, you declare channels with foreign event imports and exports:
+throught ports, like `reset` and `count`. Elm interprets
+these ports as signals and JavaScript interprets them as event streames.
+In Elm, you declare ports like this:
 
 ```haskell
-import JavaScript as JS
+-- incoming reset events
+port reset : Signal ()
 
--- An imported event stream needs a default value.
-foreign import jsevent "reset" (JS.fromInt 42)
-    resets : Signal JS.JSNumber
-
-foreign export jsevent "count"
-    count : Signal JS.JSNumber
+-- outgoing count of stamps
+port count : Signal Int
+port count = length <~ stamps
 ```
 
-Values passed along named channels must be JavaScript values and
-cannot be functions. You use the
-[`JavaScript`](http://docs.elm-lang.org/library/JavaScript.elm)
-and [`Json`](http://docs.elm-lang.org/library/Json.elm)
-libraries to do conversions.
+Values passed along named channels must conform to [these
+rules](http://elm-lang.org/learn/Ports.elm#customs-and-border-protection).
