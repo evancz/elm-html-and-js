@@ -1,17 +1,15 @@
 module Stamps where
 
-import JavaScript as JS
 import Mouse
 import Window
 
 -- Import reset events from JS
-foreign import jsevent "reset" (JS.fromInt 42)
-    resets : Signal JS.JSNumber
+port reset : Signal ()
 
 -- Events can either be mouse clicks or reset events
 events : Signal (Maybe (Int,Int))
 events = merge (Just <~ sampleOn Mouse.clicks Mouse.position)
-               (sampleOn resets (constant Nothing))
+               (always Nothing <~ reset)
 
 -- Keep a list of stamps, reseting when appropriate
 clickLocations =
@@ -31,7 +29,6 @@ scene (w,h) locs =
 
 main = lift2 scene Window.dimensions clickLocations
 
--- Export the number of stamps to JS with the name "count"
-stampCount = lift (JS.fromInt . length) clickLocations
-foreign export jsevent "count"
-    stampCount : Signal JS.JSNumber
+-- Export the number of stamps
+port count : Signal Int
+port count = length <~ clickLocations

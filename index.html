@@ -51,24 +51,24 @@
 
 <script type="text/javascript">
   // Show the stamp module in the "elm-stamps" div.
-  var stampDiv = document.getElementById('elm-stamps');
-  var stamps = Elm.embed(Elm.Stamps, stampDiv);
+  var div = document.getElementById('elm-stamps');
+  var stamps = Elm.embed(Elm.Stamps, div, { reset:[] });
 
   // Reset the number of stamps in the Elm code.
   // The value we send does not matter, we just
   // need the event.
   function resetStamps() {
-      stamps.send('reset', 42);
+    stamps.ports.reset.send([]);
   }
 
   // Always show the latest count of stamps, which is exported
   // from the Stamps module as the 'count' event stream.
-  var currentCount = document.getElementById('current-count');
-  var totalCount = document.getElementById('total-count');
-  var total = 0;
-  stamps.recv('count', function(event) {
-      currentCount.innerHTML = event.value;
-      if (event.value > 0) {
+  var currentCount = document.getElementById('current-count'),
+      totalCount   = document.getElementById('total-count'),
+      total        = 0;
+  stamps.ports.count.subscribe(function(count) {
+      currentCount.innerHTML = count;
+      if (count > 0) {
           total += 1;
           totalCount.innerHTML = total;
       }
