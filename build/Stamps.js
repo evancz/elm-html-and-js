@@ -1,82 +1,81 @@
 Elm.Stamps = Elm.Stamps || {};
-Elm.Stamps.make = function (elm)
+Elm.Stamps.make = function (_elm)
                   {
-                    elm.Stamps = elm.Stamps || {};
-                    if (elm.Stamps.values)
-                    return elm.Stamps.values
-                    var N = Elm.Native,
-                        _N = N.Utils.make(elm),
-                        _L = N.List.make(elm),
-                        _E = N.Error.make(elm),
-                        _J = N.JavaScript.make(elm),
+                    _elm.Stamps = _elm.Stamps || {};
+                    if (_elm.Stamps.values)
+                    return _elm.Stamps.values;
+                    var _N = Elm.Native,
+                        _U = _N.Utils.make(_elm),
+                        _L = _N.List.make(_elm),
+                        _E = _N.Error.make(_elm),
+                        _J = _N.JavaScript.make(_elm),
                         $moduleName = "Stamps";
-                    var Text = Elm.Text.make(elm);
-                    var Text = Elm.Text.make(elm);
-                    var Basics = Elm.Basics.make(elm);
-                    var Signal = Elm.Signal.make(elm);
-                    var List = Elm.List.make(elm);
-                    var Maybe = Elm.Maybe.make(elm);
-                    var Time = Elm.Time.make(elm);
-                    var Prelude = Elm.Prelude.make(elm);
+                    var Basics = Elm.Basics.make(_elm);
+                    var Color = Elm.Color.make(_elm);
                     var Graphics = Graphics || {};
-                    Graphics.Element = Elm.Graphics.Element.make(elm);
-                    var Color = Elm.Color.make(elm);
+                    Graphics.Collage = Elm.Graphics.Collage.make(_elm);
                     var Graphics = Graphics || {};
-                    Graphics.Collage = Elm.Graphics.Collage.make(elm);
-                    var JavaScript = Elm.JavaScript.make(elm);
-                    var Mouse = Elm.Mouse.make(elm);
-                    var Window = Elm.Window.make(elm);
-                    var resets = Signal.constant(JavaScript.fromInt(42));
-                    document.addEventListener("reset_" + elm.id,
-                                              function (e)
-                                              {
-                                                elm.notify(resets.id,e.value);
-                                              });
+                    Graphics.Element = Elm.Graphics.Element.make(_elm);
+                    var List = Elm.List.make(_elm);
+                    var Maybe = Elm.Maybe.make(_elm);
+                    var Mouse = Elm.Mouse.make(_elm);
+                    var Native = Native || {};
+                    Native.Ports = Elm.Native.Ports.make(_elm);
+                    var Prelude = Elm.Prelude.make(_elm);
+                    var Signal = Elm.Signal.make(_elm);
+                    var String = Elm.String.make(_elm);
+                    var Text = Elm.Text.make(_elm);
+                    var Time = Elm.Time.make(_elm);
+                    var Window = Elm.Window.make(_elm);
                     var _op = {};
-                    var scene = F2(function (arg1,locs)
+                    var scene = F2(function (_v0,locs)
                                    {
                                      return function ()
                                             {
-                                              switch (arg1.ctor)
+                                              switch (_v0.ctor)
                                               {case
                                                "_Tuple2" :
                                                  return function ()
                                                         {
-                                                          var drawPentagon = function (arg0)
+                                                          var drawPentagon = function (_v4)
                                                                              {
                                                                                return function ()
                                                                                       {
-                                                                                        switch (arg0.ctor)
+                                                                                        switch (_v4.ctor)
                                                                                         {case
                                                                                          "_Tuple2" :
-                                                                                           return Graphics.Collage.rotate(Basics.toFloat(arg0._0))(Graphics.Collage.move({ctor: "_Tuple2", _0: Basics.toFloat(arg0._0) - Basics.toFloat(arg1._0) / 2, _1: Basics.toFloat(arg1._1) / 2 - Basics.toFloat(arg0._1)})(Graphics.Collage.filled(A4(Color.hsva,
-                                                                                                                                                                                                                                                                                                                                             Basics.toFloat(arg0._0),
-                                                                                                                                                                                                                                                                                                                                             1,
-                                                                                                                                                                                                                                                                                                                                             1,
-                                                                                                                                                                                                                                                                                                                                             0.7))(A2(Graphics.Collage.ngon,
-                                                                                                                                                                                                                                                                                                                                                      5,
-                                                                                                                                                                                                                                                                                                                                                      20))))}
+                                                                                           return Graphics.Collage.rotate(Basics.toFloat(_v4._0))(Graphics.Collage.move({ctor: "_Tuple2", _0: Basics.toFloat(_v4._0) - Basics.toFloat(_v0._0) / 2, _1: Basics.toFloat(_v0._1) / 2 - Basics.toFloat(_v4._1)})(Graphics.Collage.filled(A4(Color.hsva,
+                                                                                                                                                                                                                                                                                                                                        Basics.toFloat(_v4._0),
+                                                                                                                                                                                                                                                                                                                                        1,
+                                                                                                                                                                                                                                                                                                                                        1,
+                                                                                                                                                                                                                                                                                                                                        0.7))(A2(Graphics.Collage.ngon,
+                                                                                                                                                                                                                                                                                                                                                 5,
+                                                                                                                                                                                                                                                                                                                                                 20))));}
                                                                                         _E.Case($moduleName,
-                                                                                                "between lines 26 and 28");
-                                                                                      }()
+                                                                                                "between lines 24 and 26");
+                                                                                      }();
                                                                              };
                                                           return Graphics.Element.layers(_J.toList([A3(Graphics.Collage.collage,
-                                                                                                       arg1._0,
-                                                                                                       arg1._1,
+                                                                                                       _v0._0,
+                                                                                                       _v0._1,
                                                                                                        A2(List.map,
                                                                                                           drawPentagon,
                                                                                                           locs)),
-                                                                                                    Text.plainText("Click to stamp a pentagon.")]))
-                                                        }()}
-                                              _E.Case($moduleName,"between lines 25 and 30");
-                                            }()
+                                                                                                    Text.plainText("Click to stamp a pentagon.")]));
+                                                        }();}
+                                              _E.Case($moduleName,"between lines 23 and 28");
+                                            }();
                                    });
-                    var resets = Signal.constant(JavaScript.fromInt(42));
+                    var reset = Native.Ports.portIn("reset",
+                                                    Native.Ports.incomingSignal(function (v)
+                                                                                {
+                                                                                  return typeof v === "object" && v instanceof Array ? {ctor: "_Tuple0"} : _E.raise("invalid input, expecting JSArray but got " + v);
+                                                                                }));
                     var events = A2(Signal.merge,
                                     A2(Signal._op["<~"],
                                        Maybe.Just,
                                        A2(Signal.sampleOn,Mouse.clicks,Mouse.position)),
-                                    A2(Signal.sampleOn,resets,Signal.constant(Maybe.Nothing)));
+                                    A2(Signal._op["<~"],Basics.always(Maybe.Nothing),reset));
                     var clickLocations = function ()
                                          {
                                            var update = F2(function (event,locations)
@@ -86,33 +85,25 @@ Elm.Stamps.make = function (elm)
                                                                       switch (event.ctor)
                                                                       {case
                                                                        "Just" :
-                                                                         return {ctor: "::", _0: event._0, _1: locations}
+                                                                         return {ctor: "::", _0: event._0, _1: locations};
                                                                        case
                                                                        "Nothing" :
-                                                                         return _J.toList([])}
+                                                                         return _J.toList([]);}
                                                                       _E.Case($moduleName,
-                                                                              "between lines 18 and 21");
-                                                                    }()
+                                                                              "between lines 16 and 19");
+                                                                    }();
                                                            });
-                                           return A3(Signal.foldp,update,_J.toList([]),events)
+                                           return A3(Signal.foldp,update,_J.toList([]),events);
                                          }();
                     var main = A3(Signal.lift2,scene,Window.dimensions,clickLocations);
-                    var stampCount = A2(Signal.lift,
-                                        function ($)
-                                        {
-                                          return JavaScript.fromInt(List.length($))
-                                        },
-                                        clickLocations);
-                    A2(Signal.lift,
-                       function (v)
-                       {
-                         var e = document.createEvent("Event");
-                         e.initEvent("count_" + elm.id,true,true);
-                         e.value = v;
-                         document.dispatchEvent(e);
-                         return v
-                       },
-                       stampCount);
-                    elm.Stamps.values = {_op: _op, events: events, clickLocations: clickLocations, scene: scene, main: main, stampCount: stampCount};
-                    return elm.Stamps.values
+                    var count = Native.Ports.portOut("count",
+                                                     Native.Ports.outgoingSignal(function (v)
+                                                                                 {
+                                                                                   return _J.fromInt(v);
+                                                                                 }),
+                                                     A2(Signal._op["<~"],
+                                                        List.length,
+                                                        clickLocations));
+                    _elm.Stamps.values = {_op: _op, events: events, clickLocations: clickLocations, scene: scene, main: main};
+                    return _elm.Stamps.values;
                   };
