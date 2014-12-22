@@ -1,14 +1,14 @@
 module Stamps where
 
-import Mouse
-import Window
-import Signal (..)
-import List ((::), length)
-import List
+import Color (..)
 import Graphics.Collage (..)
 import Graphics.Element (..)
+import List
+import List ((::))
+import Mouse
+import Signal (..)
 import Text (..)
-import Color (..)
+import Window
 
 -- Import reset events from JS
 port reset : Signal ()
@@ -18,7 +18,7 @@ events : Signal (Maybe (Int,Int))
 events = merge (Just <~ sampleOn Mouse.clicks Mouse.position)
                (always Nothing <~ reset)
 
--- Keep a list of stamps, reseting when appropriate
+-- Keep a list of stamps, resetting when appropriate
 clickLocations : Signal (List (Int,Int))
 clickLocations =
     let update event locations = case event of
@@ -41,4 +41,4 @@ main = map2 scene Window.dimensions clickLocations
 
 -- Export the number of stamps
 port count : Signal Int
-port count = length <~ clickLocations
+port count = List.length <~ clickLocations
