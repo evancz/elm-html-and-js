@@ -39,7 +39,7 @@ stamps.ports.count.subscribe(function(event) {
 ```
 Communication between Elm and JavaScript happens by sending events
 throught ports, like `reset` and `count`. Elm interprets
-these ports as signals and JavaScript interprets them as event streames.
+these ports as signals and JavaScript interprets them as event streams.
 In Elm, you declare ports like this:
 
 ```haskell
