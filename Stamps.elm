@@ -1,13 +1,13 @@
 module Stamps where
 
-import Color (..)
-import Graphics.Collage (..)
-import Graphics.Element (..)
+import Color exposing (..)
+import Graphics.Collage exposing (..)
+import Graphics.Element exposing (..)
 import List
-import List ((::))
+import List exposing ((::))
 import Mouse
-import Signal (..)
-import Text (..)
+import Signal exposing (..)
+import Text exposing (..)
 import Window
 
 -- Import reset events from JS
@@ -34,7 +34,7 @@ scene (w,h) locs =
                     |> move (toFloat x - toFloat w / 2, toFloat h / 2 - toFloat y)
                     |> rotate (toFloat x)
   in  layers [ collage w h (List.map drawPentagon locs)
-             , plainText "Click to stamp a pentagon."
+             , show "Click to stamp a pentagon."
              ]
 
 main = map2 scene Window.dimensions clickLocations
