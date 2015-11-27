@@ -4,7 +4,6 @@ import Color exposing (..)
 import Graphics.Collage exposing (..)
 import Graphics.Element exposing (..)
 import Mouse
-import Signal exposing ((<~))
 import Window
 
 
@@ -16,8 +15,8 @@ port reset : Signal ()
 events : Signal (Maybe (Int,Int))
 events =
   Signal.merge
-    (Just <~ Signal.sampleOn Mouse.clicks Mouse.position)
-    (always Nothing <~ reset)
+    (Signal.map Just (Signal.sampleOn Mouse.clicks Mouse.position))
+    (Signal.map (always Nothing) reset)
 
 
 -- Keep a list of stamps, resetting when appropriate

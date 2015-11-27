@@ -7,7 +7,7 @@ page and how to communicate with JavaScript.
 
     git clone https://github.com/evancz/elm-html-and-js.git
     cd elm-html-and-js
-    elm-make Stamps.elm
+    elm-make Stamps.elm --output elm.js
     open index.html
 
 ### Overview of API Usage
