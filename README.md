@@ -17,9 +17,9 @@ If you create an Elm module named `Stamps`, it will be named
 use any of the following functions:
 
 ```javascript
-Elm.fullscreen(Elm.Stamps, {reset:[]});   // take over the whole page
-Elm.embed(Elm.Stamps, div, {reset:[]});   // embed in a specific DOM node
-Elm.worker(Elm.Stamps,     {reset:[]});   // instantiate without graphics
+Elm.Stamps.fullscreen({reset:[]});   // take over the whole page
+Elm.Stamps.embed(div, {reset:[]});   // embed in a specific DOM node
+Elm.Stamps.worker({reset:[]});   // instantiate without graphics
 ```
 
 Each of these creates a module instance that you can communicate
@@ -28,7 +28,7 @@ with from JavaScript.
 ```javascript
 // Embed the Stamps module in a div with ID 'elm-stamps'
 var div = document.getElementById('elm-stamps');
-var stamps = Elm.embed(Elm.Stamps, div, {reset:[]});
+var stamps = Elm.Stamps.embed(div, {reset:[]});
 
 // You can send and receive values through
 // ports 'reset' and 'count'.
